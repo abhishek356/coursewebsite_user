@@ -1,0 +1,8 @@
+.customInput{
+
+    color : #a32e9a
+}
+
+.customInput::label{
+    color : 'black'
+}
