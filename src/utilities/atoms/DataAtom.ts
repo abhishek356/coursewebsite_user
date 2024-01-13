@@ -1,18 +1,15 @@
 import {atom} from 'recoil'
 
-export const courseList = atom({
+export let courseList = atom({
 
     key:'courseList',
-    default : {
-        isLoading:true,
-        allCourses: []
-    }
+    default : []
 
 })
 
-export const userCourses = atom({
-    key : 'userCourses',
-    default :{
-        UserCourses : []
-    }
-})
+// export let UserCourses = atom({
+//     key : 'userCourses',
+//     default :{
+//         UserCourses : []
+//     }
+// })

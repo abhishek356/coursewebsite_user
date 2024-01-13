@@ -25,10 +25,9 @@ export function App() {
         res = await axios.post(BASE_URL+'/loadCourses')
         console.log('data received from the backend is',res.data)
 
-        setAllCourse({
-          isLoading:false,
-          courseList:res.data
-        });
+        setAllCourse(
+          res.data.data
+        );
 
 
       }

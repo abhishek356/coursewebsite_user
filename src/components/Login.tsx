@@ -3,15 +3,16 @@ import { BASE_URL } from '../utilities/utilites';
 import { useState } from 'react';
 import  '../App.css'
 import axios from 'axios';
-import { userCourses } from '../utilities/atoms/DataAtom';
-import { useSetRecoilState } from 'recoil';
+import { UserData } from '../utilities/atoms/UserCourseData';
+import { useSetRecoilState,useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
 let Login = ()=>{
 
     let [username,setUsername] = useState<string>();
     let [password,setPassword] = useState<string>();
-    let setuserCourses = useSetRecoilState(userCourses);
+    let setuserCourses = useSetRecoilState(UserData);
+   // let [courses,setCourse] = useRecoilState(UserData)
     let navigate = useNavigate();
 
     let handleUserLogin = async()=>{
@@ -21,12 +22,26 @@ let Login = ()=>{
                 password
             });
  
-            console.log(`request received from the backend is ${JSON.stringify(res.data, null, 2)}`)
+            console.log(`request received from the backend is ${JSON.stringify(res.data.purchasedCourses, null, 2)}`)
+
+        //  console.log(`request received from the backend is ${res}`)
+
 
             localStorage.setItem('token',res.data.token);
-            console.log(`the list of couseIds bought by the user is ${res.data.purchasedCourses}`)
-            setuserCourses(res.data.purchasedCourses)
-            navigate('/purchasedCourses')
+         //   console.log('the list of couseIds bought by the user is ',
+          //  res.data.purchasedCourses)
+
+            if(res.data.purchasedCourses != undefined)
+            {
+                setuserCourses(res.data.purchasedCourses);
+             //
+              // console.log(`The data stored in the atom is ${courses}`)
+                navigate('/purchasedCourses')
+
+            }
+            else{
+                console.log(`the value stored is undefined`)
+            }
         }
         catch(error)
         {

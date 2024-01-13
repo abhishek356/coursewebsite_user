@@ -9,3 +9,16 @@ html,body{
   width : 100%;
   height:100%
 }
+
+/* Define styles for the input field */
+.placeholder-moved {
+  padding: 10px; /* Adjust as needed */
+  font-size: 16px; /* Adjust as needed */
+}
+
+/* Move the placeholder text using the ::placeholder pseudo-element */
+.placeholder-moved::placeholder {
+  color: white; /* Make the text transparent */
+  margin-left: 10px; /* Adjust the left margin to move the placeholder text */
+  /* Add any additional styles you want for the placeholder */
+}
