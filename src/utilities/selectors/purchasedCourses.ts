@@ -1,6 +1,7 @@
 import { selector } from "recoil";
 import {UserData} from '../atoms/UserCourseData'
 import {courseList} from '../atoms/DataAtom'
+import { course } from "../Structure";
 
 
 
@@ -8,7 +9,7 @@ export let purchasedCourses  = selector({
     key : 'purchasedCourses',
     get : ({get})=>{
 
-        const CourseList = get(courseList);
+        const CourseList:course[] = get(courseList);
         const PurchasedCourses = get(UserData)
         const purchasedCourseIds = PurchasedCourses || {};
 

@@ -11,11 +11,12 @@ import { useSetRecoilState } from 'recoil'
 import {courseList} from './utilities/atoms/DataAtom'
 import {PurchasedCourses} from './components/PurchasedCourses'
 import { BASE_URL } from './utilities/utilites'
+import {course} from './utilities/Structure'
 
 export function App() {
 
   let res;
-  let setAllCourse = useSetRecoilState(courseList)
+  let setAllCourse = useSetRecoilState<course[]>(courseList)
   useEffect(()=>{
 
     try{

@@ -1,5 +1,5 @@
 import {atom} from 'recoil'
-
+import { purchaseCourseIds } from '../Structure'
 // export let courseList = atom({
 
 //     key:'courseList',
@@ -10,9 +10,9 @@ import {atom} from 'recoil'
 
 // })   
 
-export let UserData = atom({
+export let UserData = atom<purchaseCourseIds>({
     key : 'UserData',
-    default :[]
+    default : []
     
     
 })

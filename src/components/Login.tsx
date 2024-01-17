@@ -6,6 +6,7 @@ import axios from 'axios';
 import { UserData } from '../utilities/atoms/UserCourseData';
 import { useSetRecoilState,useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
+import { purchaseCourseIds } from '../utilities/Structure';
 
 let Login = ()=>{
 

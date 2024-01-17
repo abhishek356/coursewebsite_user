@@ -1,11 +1,15 @@
-import {atom} from 'recoil'
+import {atom, RecoilState} from 'recoil'
+import { course } from '../Structure'
 
-export let courseList = atom({
+export let courseList = atom<course[]>({
 
     key:'courseList',
-    default : []
-
+   //default : [{title : '',description:'',price:'',imageLink:'', published:'',id:0}]
+     default :[]
 })
+
+
+
 
 // export let UserCourses = atom({
 //     key : 'userCourses',

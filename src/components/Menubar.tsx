@@ -6,12 +6,14 @@ import { courseList } from '../utilities/atoms/DataAtom'
 import { useRecoilValue } from 'recoil'
 //import {SearchItems}  from './SearchItems'
 import { useState } from 'react'
+import { course } from '../utilities/Structure'
+import { SearchItems } from './SearchItems'
 
 let Menubar = ()=>{
 
     let navigate = useNavigate();
-    let allCourses = useRecoilValue(courseList);
-    let [listCourse,setlistCourse] = useState<object[]>([]);
+    let allCourses = useRecoilValue<course[]>(courseList);
+    let [listCourse,setlistCourse] = useState<course[]>([]);
 
     let customMenu = {
         backgroundColor : 'black',
@@ -28,7 +30,7 @@ let Menubar = ()=>{
 
     let searchCourse = (val:string):void=>{
 
-        let filtereCourses : object[] = allCourses.filter(course=>{
+        let filtereCourses : course[] = allCourses.filter(course=>{
             return course.title.toLowerCase().includes(val.toLowerCase())
         })
 
@@ -72,14 +74,14 @@ let Menubar = ()=>{
                 color : 'white',
                 width: '500px',
                 borderColor:'white',
-                borderRadius:'20px'
+                borderRadius:'0px'
                 
             }} onChange={(event)=>{
                 searchCourse(event.target.value)
-            
-            }}></input>
+            }}>
+            </input>
         </div>
-        
+       {listCourse ?(<SearchItems props={listCourse}/>):(<p></p>)}
         <div style = {{
             marginRight:'5px',
             fontSize : '20px'
