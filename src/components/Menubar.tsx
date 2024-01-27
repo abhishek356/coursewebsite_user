@@ -29,16 +29,18 @@ let Menubar = ()=>{
     }
 
     let searchCourse = (val:string):void=>{
-
-        let filtereCourses : course[] = allCourses.filter(course=>{
-            return course.title.toLowerCase().includes(val.toLowerCase())
-        })
-
-        console.log(filtereCourses);
-        if(filtereCourses!=undefined)
-        {
+        let filtereCourses : course[] 
+        if(val!==''){
+        filtereCourses   = allCourses.filter(course=>{
+                return course.title.toLowerCase().includes(val.toLowerCase())
+            })
             setlistCourse(filtereCourses)
         }
+        else{
+            setlistCourse([])
+        }
+        
+
         console.log(`the array of list courses contains ${listCourse}`)
     }
 
@@ -77,7 +79,15 @@ let Menubar = ()=>{
                 borderRadius:'0px'
                 
             }} onChange={(event)=>{
+                if(event.target.value == null || event.target.value == undefined)
+                {
+                    setlistCourse([]),
+                    searchCourse('')
+                }
+                else{
                 searchCourse(event.target.value)
+                
+                }
             }}>
             </input>
         </div>

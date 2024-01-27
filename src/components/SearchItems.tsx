@@ -10,9 +10,15 @@ return (<>
 <div style = {{
     backgroundColor : 'red',
     position:'absolute',
-    marginLeft:'217px',
+    marginTop:'99px',
+    marginLeft:'469px',
     width : '500px'
 }}>
-{items.props?(<p>{JSON.stringify(items.props[0])}</p>):(<p></p>)}|
+{items.props?(<p>{items.props.map((i:course)=>{
+   
+   console.log(`the value received from props is ${i}`)
+   
+   return i.title
+})}</p>):(<p></p>)}|
 </div>
 </>)}
